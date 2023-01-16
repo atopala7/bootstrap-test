@@ -89,6 +89,4 @@ window.onload = () => {
 		stolen plans that can save
 		her people and restore
 		freedom to the galaxy....`
-	
-	//iterateOverTag("a");
 }
