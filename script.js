@@ -59,7 +59,7 @@ function resetCrawl() {
 }
 
 function iterateOverLinks() {
-	iterateOverTag("a");
+	iterateOverTag("div");
 }
 
 window.onload = () => {
