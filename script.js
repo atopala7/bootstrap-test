@@ -59,12 +59,38 @@ function resetCrawl() {
 }
 
 function iterateOverLinks() {
-	iterateOverTag("div");
+	iterateOverTag("a");
+}
+
+function jedi() {
+	const name = prompt("What is the Jedi's name?");
+	
+	let jediText = document.getElementById("jedi");
+	
+	jediText.innerHTML = name;
+}
+
+function sith() {
+	const name = prompt("What is the Sith's name?");
+	
+	let sithText = document.getElementById("sith");
+	
+	sithText.innerHTML = name;
 }
 
 window.onload = () => {
 	document.getElementById("jedi").innerHTML="Jedi";
 	document.getElementById("sith").innerHTML="Sith";
+	
+	const jedi = {
+		name: null,
+		lightsaber: "Blue"
+	}
+	
+	const sith = {
+		name: null,
+		lightsaber: "Red"
+	}
 	
 	const resetButton = document.getElementById("reset");
 	const crawl = document.getElementById("crawl");
@@ -89,4 +115,6 @@ window.onload = () => {
 		stolen plans that can save
 		her people and restore
 		freedom to the galaxy....`
+	
+	//iterateOverTag("a");
 }
