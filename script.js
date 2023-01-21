@@ -78,6 +78,12 @@ function sith() {
 	sithText.innerHTML = name;
 }
 
+function changeColor(button, color) {
+	return () => {
+		document.getElementById(button).style.backgroundColor = color;
+	};
+}
+
 window.onload = () => {
 	document.getElementById("jedi").innerHTML="Jedi";
 	document.getElementById("sith").innerHTML="Sith";
@@ -91,6 +97,12 @@ window.onload = () => {
 		name: null,
 		lightsaber: "Red"
 	}
+	
+	const jediColor = changeColor("jedi", jedi.lightsaber);
+	const sithColor = changeColor("sith", sith.lightsaber);
+	
+	jediColor();
+	sithColor();
 	
 	const resetButton = document.getElementById("reset");
 	const crawl = document.getElementById("crawl");
