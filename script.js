@@ -104,8 +104,8 @@ window.onload = () => {
 	jediColor();
 	sithColor();
 	
-	const resetButton = document.getElementById("reset");
-	const crawl = document.getElementById("crawl");
+	const resetButton = document.querySelector("#reset");
+	const crawl = document.querySelector("#crawl");
 	const text = `It is a period of civil war.
 		Rebel spaceships, striking
 		from a hidden base, have won
