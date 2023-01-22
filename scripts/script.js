@@ -155,10 +155,12 @@ window.onload = () => {
 	[jedi, sith].forEach(obj => {
 		obj.element.addEventListener("mouseover", () => {
 			crawl.style.color = obj.lightsaber;
+			crawl.style.backgroundColor = "black";
 			console.log("obj is " + obj.name + ", with lightsaber " + obj.lightsaber + " and element " + obj.element.id);
 		});
 		obj.element.addEventListener("mouseout", () => {
-			crawl.style.color = "black";
+			crawl.style.backgroundColor = "black";
+			crawl.style.color = "#FFFF82";
 		});
 	});
 }
