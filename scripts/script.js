@@ -23,7 +23,7 @@ function iterateOverTag(tag) {
 	}
 	text += "\n</ul>\n"
 	
-	document.getElementById("crawl").innerHTML = text;
+	return text;
 }
 
 function replaceInnerHTML(element, text) {
@@ -89,13 +89,15 @@ window.onload = () => {
 	document.getElementById("sith").innerHTML="Sith";
 	
 	const jedi = {
-		name: null,
-		lightsaber: "Blue"
+		name: "Jedi",
+		lightsaber: "Blue",
+		element: document.querySelector("#jedi")
 	}
 	
 	const sith = {
-		name: null,
-		lightsaber: "Red"
+		name: "Sith",
+		lightsaber: "Red",
+		element: document.querySelector("#sith")
 	}
 	
 	const jediColor = changeColor("jedi", jedi.lightsaber);
@@ -105,8 +107,10 @@ window.onload = () => {
 	sithColor();
 	
 	const resetButton = document.querySelector("#reset");
+	const iterateButton = document.querySelector("#iterate");
+
 	const crawl = document.querySelector("#crawl");
-	const text = `It is a period of civil war.
+	const text = `<p>\nIt is a period of civil war.
 		Rebel spaceships, striking
 		from a hidden base, have won
 		their first victory against
@@ -126,7 +130,35 @@ window.onload = () => {
 		starship, custodian of the
 		stolen plans that can save
 		her people and restore
-		freedom to the galaxy....`
-	
-	//iterateOverTag("a");
+		freedom to the galaxy....\n<p>`
+
+	resetButton.addEventListener("click", () => {
+		crawl.innerHTML = text;
+	});
+	iterateButton.addEventListener("click", () => {
+		crawl.innerHTML = iterateOverTag("a");
+	});
+
+	// for (obj of [jedi, sith]) {
+	// 	// Create a closure to preserve the current value of obj in the scope where the listeners are assigned
+	// 	(obj => {
+	// 		obj.element.addEventListener("mouseover", () => {
+	// 			crawl.style.color = obj.lightsaber;
+	// 			console.log("obj is " + obj.name + ", with lightsaber " + obj.lightsaber + " and element " + obj.element.id);
+	// 		});
+	// 		obj.element.addEventListener("mouseout", () => {
+	// 			crawl.style.color = "black";
+	// 		});
+	// 	})(obj);
+	// }
+
+	[jedi, sith].forEach(obj => {
+		obj.element.addEventListener("mouseover", () => {
+			crawl.style.color = obj.lightsaber;
+			console.log("obj is " + obj.name + ", with lightsaber " + obj.lightsaber + " and element " + obj.element.id);
+		});
+		obj.element.addEventListener("mouseout", () => {
+			crawl.style.color = "black";
+		});
+	});
 }
