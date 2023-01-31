@@ -77,11 +77,16 @@ function placeStars() {
 
 	for (let i = 0; i < numStars; i++) {
 		let star = document.createElement("div");
-		star.style.top = Math.floor(Math.random() * window.innerHeight) + "px";
-		star.style.left = Math.floor(Math.random() * window.innerWidth) + "px";
+		// Scatter the stars across the entire window, ensuring they never go outside the viewport dimensions
+		star.style.top = Math.floor(Math.random() * window.innerHeight - 1) + "px";
+		star.style.left = Math.floor(Math.random() * window.innerWidth - 1) + "px";
 		star.style.position = "absolute";
 		star.style.width = "1px";
 		star.style.height = "1px";
+		if (Math.random() > 0.9) {
+			star.style.width = "2px";
+			star.style.height = "2px";
+		}
 		star.style.backgroundColor = "white";
 		star.style.zIndex = "-1";
 		star.className = "star";
@@ -169,9 +174,7 @@ window.onload = () => {
 			//crawl.style.backgroundColor = "black";
 			crawl.style.color = "#FFFF82";
 		});
-		obj.element.addEventListener("click", () => {
-			placeStars();
-		});
+		obj.element.addEventListener("click", placeStars);
 	});
 
 	// for (obj of [jedi, sith]) {
