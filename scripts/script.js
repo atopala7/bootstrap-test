@@ -2,27 +2,38 @@ function iterateOverTag(tag) {
 	let links = document.getElementsByTagName(tag);
 	let text = "";
 	
-	text += "<h3>For..in</h3>\n<ul>";
+	text += "<div class='container text-center'>";
+	text +=  '<div class="row">';
+    
+	text += '<div class="col">';
+	text += '<h3>For..in</h3>\n<ul class="list-group">';
 	for (const element in links) {
 		console.log(element);
-		text += `<li>${element}</li>`;
+		text += `<li class="list-group-item">${element}</li>`;
 	}
 	text += "\n</ul>\n"
+	text += "</div>";
 	
-	text += "<h3>For..of</h3>\n<ul>";
+	text += '<div class="col">';
+	text += '<h3>For..of</h3>\n<ul class="list-group">';
 	for (const element of links) {
 		console.log(element);
-		text += `<li>${element}</li>`;
+		text += `<li class="list-group-item">${element}</li>`;
 	}
-	text += "\n</ul>\n"
+	text += "\n</ul>\n";
+	text += "</div>";
 	
-	text += "<h3>For..of innerHTML</h3>\n<ul>";
+	text += '<div class="col">';
+	text += '<h3>For..of innerHTML</h3>\n<ul class="list-group">';
 	for (const element of links) {
 		console.log(element);
-		text += `<li>${element.innerHTML}</li>`;
+		text += `<li class="list-group-item">${element.innerHTML}</li>`;
 	}
-	text += "\n</ul>\n"
+	text += "\n</ul>\n";
+	text += "</div>";
 	
+	text += "</div></div>";
+
 	return text;
 }
 
@@ -50,8 +61,31 @@ function placeStars(element) {
 		star.style.width = "1px";
 		star.style.height = "1px";
 		star.style.backgroundColor = "white";
+		star.style.zIndex = "-1";
 		star.className = "star";
 		element.appendChild(star);
+	}
+}
+
+function placeStars() {
+	const numStars = 1000;
+	
+	// Remove any stars that already exist
+	for (let star of document.querySelectorAll(".star")) {
+		document.body.removeChild(star);
+	}
+
+	for (let i = 0; i < numStars; i++) {
+		let star = document.createElement("div");
+		star.style.top = Math.floor(Math.random() * window.innerHeight) + "px";
+		star.style.left = Math.floor(Math.random() * window.innerWidth) + "px";
+		star.style.position = "absolute";
+		star.style.width = "1px";
+		star.style.height = "1px";
+		star.style.backgroundColor = "white";
+		star.style.zIndex = "-1";
+		star.className = "star";
+		document.body.appendChild(star);
 	}
 }
 
@@ -70,9 +104,14 @@ window.onload = () => {
 		element: document.querySelector("#sith")
 	}
 
-	jedi.element.innerHTML="Jedi";
-	sith.element.innerHTML="Sith";
-	
+	jedi.element.innerHTML="";
+	sith.element.innerHTML="";
+
+
+	document.querySelector("#buttons").style.display = "flex";
+	jedi.element.style.width = "50%";
+	sith.element.style.width = "50%";
+
 	const jediColor = changeColor("jedi", jedi.lightsaber);
 	const sithColor = changeColor("sith", sith.lightsaber);
 	
@@ -108,23 +147,30 @@ window.onload = () => {
 	resetButton.addEventListener("click", () => {
 		showingCrawl = true;
 		crawl.innerHTML = text;
-		placeStars(crawl);
+		placeStars();
 	});
 	iterateButton.addEventListener("click", () => {
 		showingCrawl = false;
-		crawl.innerHTML = iterateOverTag("a");
+		crawl.innerHTML = iterateOverTag("button");
+		placeStars();
 	});
 
-	placeStars(crawl);
+	document.body.style.backgroundColor = "black";
+	crawl.style.color = "#FFFF82";
+
+	placeStars();
 
 	[jedi, sith].forEach(obj => {
 		obj.element.addEventListener("mouseover", () => {
 			crawl.style.color = obj.lightsaber;
-			crawl.style.backgroundColor = "black";
+			//crawl.style.backgroundColor = "black";
 		});
 		obj.element.addEventListener("mouseout", () => {
-			crawl.style.backgroundColor = "black";
+			//crawl.style.backgroundColor = "black";
 			crawl.style.color = "#FFFF82";
+		});
+		obj.element.addEventListener("click", () => {
+			placeStars();
 		});
 	});
 
