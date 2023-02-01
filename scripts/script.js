@@ -165,6 +165,13 @@ window.onload = () => {
 
 	placeStars();
 
+	// Scatter the stars whenever a window resize event completes (or pauses for 200ms)
+	let timerID;
+	window.addEventListener("resize", () => {
+		clearTimeout(timerID);
+		timerID = setTimeout(placeStars, 200);
+	});
+
 	[jedi, sith].forEach(obj => {
 		obj.element.addEventListener("mouseover", () => {
 			crawl.style.color = obj.lightsaber;
