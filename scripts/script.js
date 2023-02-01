@@ -196,12 +196,4 @@ window.onload = () => {
 	// 		});
 	// 	})(obj);
 	// }
-
-	// A listener to repopulate the stars whenever the window is resized
-	// Can be CPU-intensive without a delay function
-	// window.addEventListener("resize", () => {
-	// 	if (showingCrawl) {
-	// 		placeStars(crawl);
-	// 	}
-	// });
 }
