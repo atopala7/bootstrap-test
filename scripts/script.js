@@ -83,9 +83,15 @@ function placeStars() {
 		star.style.position = "absolute";
 		star.style.width = "1px";
 		star.style.height = "1px";
-		if (Math.random() > 0.9) {
+		if (Math.random() > 0.75) {
 			star.style.width = "2px";
 			star.style.height = "2px";
+			star.style.borderRadius = "50%";
+		}
+		if (Math.random() > 0.95) {
+			star.style.width = "3px";
+			star.style.height = "3px";
+			star.style.borderRadius = "50%";
 		}
 		star.style.backgroundColor = "white";
 		star.style.zIndex = "-1";
