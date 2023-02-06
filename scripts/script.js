@@ -118,8 +118,15 @@ window.onload = () => {
 	jedi.element.innerHTML="";
 	sith.element.innerHTML="";
 
-
 	document.querySelector("#buttons").style.display = "flex";
+	document.querySelector("#buttons").style.width = "100%";
+	document.querySelector("#buttons").style.justifyContent = "space-between";
+	document.querySelector("#buttons").style.padding = "16px 32px";
+	document.querySelectorAll("#buttons button").forEach((item) => {
+		item.style.width = "30%";
+	});
+
+	document.querySelector("#bottom").style.display = "flex";
 	jedi.element.style.width = "50%";
 	sith.element.style.width = "50%";
 
