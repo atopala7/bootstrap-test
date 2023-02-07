@@ -68,7 +68,7 @@ function placeStars(element) {
 }
 
 function placeStars() {
-	const numStars = 1000;
+	const numStars = 10000;
 	
 	// Remove any stars that already exist
 	for (let star of document.querySelectorAll(".star")) {
@@ -78,17 +78,17 @@ function placeStars() {
 	for (let i = 0; i < numStars; i++) {
 		let star = document.createElement("div");
 		// Scatter the stars across the entire window, ensuring they never go outside the viewport dimensions
-		star.style.top = Math.floor(Math.random() * window.innerHeight - 1) + "px";
-		star.style.left = Math.floor(Math.random() * window.innerWidth - 1) + "px";
+		star.style.top = Math.floor(Math.random() * window.innerHeight - 2) + "px";
+		star.style.left = Math.floor(Math.random() * window.innerWidth - 2) + "px";
 		star.style.position = "absolute";
 		star.style.width = "1px";
 		star.style.height = "1px";
-		if (Math.random() > 0.75) {
+		if (Math.random() > 0.8) {
 			star.style.width = "2px";
 			star.style.height = "2px";
 			star.style.borderRadius = "50%";
 		}
-		if (Math.random() > 0.95) {
+		if (Math.random() > 0.99) {
 			star.style.width = "3px";
 			star.style.height = "3px";
 			star.style.borderRadius = "50%";
