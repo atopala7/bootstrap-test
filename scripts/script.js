@@ -96,7 +96,8 @@ function placeStars() {
 		star.style.backgroundColor = "white";
 		star.style.zIndex = "-1";
 		// star.className = "star";
-		
+		star.classList.add("star");
+
 		document.body.appendChild(star);
 	}
 }
