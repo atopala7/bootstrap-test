@@ -69,6 +69,7 @@ function placeStars(element) {
 
 function placeStars() {
 	const numStars = 10000;
+	console.log("Placing stars...");
 	
 	// Remove any stars that already exist
 	for (let star of document.querySelectorAll(".star")) {
@@ -95,7 +96,6 @@ function placeStars() {
 		}
 		star.style.backgroundColor = "white";
 		star.style.zIndex = "-1";
-		// star.className = "star";
 		star.classList.add("star");
 
 		document.body.appendChild(star);
@@ -119,6 +119,11 @@ window.onload = () => {
 
 	jedi.element.innerHTML="";
 	sith.element.innerHTML="";
+
+	console.log(jedi.element.previousSibling);
+	console.log(jedi.element.previousElementSibling);
+	console.log(sith.element.previousSibling);
+	console.log(sith.element.previousElementSibling);
 
 	document.querySelector("#buttons").style.display = "flex";
 	document.querySelector("#buttons").style.width = "100%";
